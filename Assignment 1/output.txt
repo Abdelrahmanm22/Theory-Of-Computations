@@ -1,0 +1,12 @@
+1
+valid email
+invalid email
+invalid email
+x
+2
+valid phone number
+valid phone number
+valid phone number
+invalid phone number
+invalid phone number
+x
