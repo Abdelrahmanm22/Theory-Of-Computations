@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 public class Main {
     public static void main(String[] args) {
 
-        String regex = "(a(aa)*b(bb)*)";
+        String regex = "(a(aa)*b(bb)*)|(b(bb)*a(aa)*)";
 //        String regex = "(a(aa)*+b(bb)*)+";
         Pattern pattern = Pattern.compile(regex);
 
@@ -13,6 +13,7 @@ public class Main {
                 "aabaaaaabaa",
                 "aab",
                 "abbbaaaab",
+                "bbbaaab"
         };
         for (String st : strings) {
             Matcher matcher = pattern.matcher(st);

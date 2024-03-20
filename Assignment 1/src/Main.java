@@ -41,7 +41,9 @@ public class Main {
             }else if (problemNumber==8){
 
             }else if (problemNumber==9){
-
+                writer.write(9+"\n");
+                problem9(reader,writer);
+                writer.write("x\n");
             }else if (problemNumber==10){
 
             }
@@ -108,6 +110,39 @@ public class Main {
                 writer.write("start index: " + startIdx + ", end index: " + endIdx+"\n");
             }
             writer.write("number of matched substrings: " + count+"\n");
+        }
+    }
+
+    public static void problem9(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String line;
+        while (!(line = reader.readLine()).equals("end")) {
+            File file = new File(line);
+            writer.write("*" + file.getName() + "*\n");
+
+            String regex = "(https?://\\S+)";
+            Pattern pattern = Pattern.compile(regex);
+
+            BufferedReader fileReader = new BufferedReader(new FileReader(file));
+            String fileLine;
+            int lineNumber = 1;
+            int totalURLs = 0;
+
+            while ((fileLine = fileReader.readLine()) != null) {
+                Matcher matcher = pattern.matcher(fileLine);
+                while (matcher.find()) {
+                    totalURLs++;
+                    String url = matcher.group();
+                    int startIndex = matcher.start();
+                    int endIndex = matcher.end();
+                    writer.write("URL: " + url + "\n");
+                    writer.write("Line: " + lineNumber + "\n");
+                    writer.write("Start index: " + startIndex + ", End index: " + (endIndex) + "\n");
+                }
+                lineNumber++;
+            }
+
+            writer.write("Number of URLs: " + totalURLs + "\n");
+            fileReader.close();
         }
     }
 }

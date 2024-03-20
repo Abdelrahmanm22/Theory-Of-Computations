@@ -22,3 +22,19 @@ matched substring: aaaaab
 start index: 3, end index: 9
 number of matched substrings: 2
 x
+9
+*problem9file.txt*
+URL: https://www.example.com/
+Line: 1
+Start index: 36, End index: 60
+URL: https://blog.example.com.
+Line: 2
+Start index: 55, End index: 80
+URL: https://twitter.com/example.
+Line: 3
+Start index: 35, End index: 63
+URL: https://www.example.com/example1/example2.
+Line: 4
+Start index: 43, End index: 85
+Number of URLs: 4
+x
