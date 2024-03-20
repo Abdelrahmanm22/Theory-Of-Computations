@@ -1,32 +1,32 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class Main {
     public static void main(String[] args) {
 
-        String regex ="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";;
+        String regex = "(a(aa)*b(bb)*)";
+//        String regex = "(a(aa)*+b(bb)*)+";
         Pattern pattern = Pattern.compile(regex);
 
-        String[] emails ={
-                "user@example.com",
-                "user.name@example.co.in",
-                "user123@gmail.com",
-                "user.name@domain.co.uk",
-                "1234567890@example.com",
-                "user-123@example.com",
-                "user@subdomain.example.com",
-                "user@123.123.123.123",
-                "user@[123.123.123.123]",
-                "user@example.com."
+        String[] strings = {
+                "aabb",
+                "aabaaaaabaa",
+                "aab",
+                "abbbaaaab",
         };
-        for(String email :emails){
-            Matcher matcher = pattern.matcher(email);
-            if (matcher.matches()){
-                System.out.println(email +" : Valid");
-            }else{
-                System.out.println(email +" : inValid");
+        for (String st : strings) {
+            Matcher matcher = pattern.matcher(st);
+            int count = 0;
+            System.out.println("*" + st + "*");
+            while (matcher.find()) {
+                count++;
+                String matchedSubstring = matcher.group();
+                int startIdx = matcher.start();
+                int endIdx = matcher.end();
+                System.out.println("matched substring: " + matchedSubstring);
+                System.out.println("start index: " + startIdx + ", end index: " + endIdx);
             }
+            System.out.println("number of matched substrings: " + count);
         }
     }
 }

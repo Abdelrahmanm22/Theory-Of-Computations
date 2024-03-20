@@ -33,7 +33,11 @@ public class Main {
             }else if (problemNumber==6){
 
             }else if(problemNumber==7){
-
+                ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
+                //فابقو بصو عليها
+                writer.write(7+"\n");
+                problem7(reader,writer);
+                writer.write("x\n");
             }else if (problemNumber==8){
 
             }else if (problemNumber==9){
@@ -81,6 +85,29 @@ public class Main {
             }else{
                 writer.write("invalid phone number\n");
             }
+        }
+    }
+
+    ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
+    //فابقو بصو عليها
+    public static void problem7(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String regex = "(a(aa)*b(bb)*)"; ////شبه الفي الslides بتاعة lecture2 سلايد رقم 15
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            Matcher matcher = pattern.matcher(line);
+            int count = 0;
+            writer.write("*" + line + "*\n");
+            while (matcher.find()) {
+                count++;
+                String matchedSubstring = matcher.group();
+                int startIdx = matcher.start();
+                int endIdx = matcher.end();
+                writer.write("matched substring: " + matchedSubstring+"\n");
+                writer.write("start index: " + startIdx + ", end index: " + endIdx+"\n");
+            }
+            writer.write("number of matched substrings: " + count+"\n");
         }
     }
 }

@@ -10,3 +10,15 @@ valid phone number
 invalid phone number
 invalid phone number
 x
+7
+*aabb*
+matched substring: ab
+start index: 1, end index: 3
+number of matched substrings: 1
+*aabaaaaabaa*
+matched substring: ab
+start index: 1, end index: 3
+matched substring: aaaaab
+start index: 3, end index: 9
+number of matched substrings: 2
+x
