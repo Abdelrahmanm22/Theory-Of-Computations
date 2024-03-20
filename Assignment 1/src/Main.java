@@ -33,7 +33,9 @@ public class Main {
                 problem4(reader,writer);
                 writer.write("x\n");
             }else if (problemNumber==5){
-
+                writer.write(5+"\n");
+                problem5(reader,writer);
+                writer.write("x\n");
             }else if (problemNumber==6){
                 writer.write(6+"\n");
                 problem6(reader,writer);
@@ -130,6 +132,23 @@ public class Main {
                 writer.write("valid IP address\n");
             }else{
                 writer.write("invalid IP address\n");
+            }
+        }
+    }
+
+    /// Validate all C++ variables
+    public static void problem5(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String regex =  "[a-zA-Z_][a-zA-Z0-9_]*";
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.matches()){
+//                System.out.println(line);
+                writer.write("valid C++ variable name\n");
+            }else{
+                writer.write("invalid C++ variable name\n");
             }
         }
     }

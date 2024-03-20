@@ -19,6 +19,14 @@ end
 192.168.1.1
 192.168.1.256
 end
+5
+x
+x1y2
+_hello
+1x
+bad name
+!name
+end
 6
 bbb
 bBb
