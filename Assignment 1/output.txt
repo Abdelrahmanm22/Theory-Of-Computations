@@ -10,6 +10,10 @@ valid phone number
 invalid phone number
 invalid phone number
 x
+4
+valid IP address
+invalid IP address
+x
 7
 *aabb*
 matched substring: ab
