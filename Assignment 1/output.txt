@@ -19,6 +19,11 @@ x
 valid IP address
 invalid IP address
 x
+6
+invalid string, has 3 consecutive b's
+invalid string, has 3 consecutive b's
+valid string
+x
 7
 *aabb*
 matched substring: ab

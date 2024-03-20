@@ -35,7 +35,9 @@ public class Main {
             }else if (problemNumber==5){
 
             }else if (problemNumber==6){
-
+                writer.write(6+"\n");
+                problem6(reader,writer);
+                writer.write("x\n");
             }else if(problemNumber==7){
                 ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
                 //فابقو بصو عليها
@@ -115,6 +117,7 @@ public class Main {
         }
     }
 
+    // Validate ip address
     public static void problem4(BufferedReader reader, BufferedWriter writer) throws IOException {
         String regex ="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
         Pattern pattern = Pattern.compile(regex);
@@ -130,6 +133,25 @@ public class Main {
             }
         }
     }
+
+
+    // Check letter b is never tripled
+    public static void problem6(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String regex ="^(?i)(?!.*bbb).*$";
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.matches()){
+                writer.write("valid string\n");
+            }else{
+                writer.write("invalid string, has 3 consecutive b's\n");
+            }
+        }
+    }
+
+
 
 
     ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
