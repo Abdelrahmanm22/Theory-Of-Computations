@@ -25,7 +25,9 @@ public class Main {
                 problem2(reader,writer);
                 writer.write("x\n");
             }else if (problemNumber==3){
-
+                writer.write(3+"\n");
+                problem3(reader,writer);
+                writer.write("x\n");
             }else if (problemNumber==4){
                 writer.write(4+"\n");
                 problem4(reader,writer);
@@ -92,6 +94,23 @@ public class Main {
                 writer.write("valid phone number\n");
             }else{
                 writer.write("invalid phone number\n");
+            }
+        }
+    }
+
+    ///Validate dates
+    public static void problem3(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String regex = "^(\\d{4}\\/\\d{2}\\/\\d{2}|\\d{4}-\\d{2}-\\d{2}|\\d{2}\\/\\d{2}\\/\\d{4}|\\d{1}\\/\\d{2}\\/\\d{4}|\\d{2}\\/\\d{1}\\/\\d{4}|\\d{2}-\\d{2}-\\d{4}|\\d{1}-\\d{2}-\\d{4}|\\d{2}-\\d{1}-\\d{4})$";
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.matches()){
+//                System.out.println(line);
+                writer.write("valid date\n");
+            }else{
+                writer.write("invalid date\n");
             }
         }
     }
