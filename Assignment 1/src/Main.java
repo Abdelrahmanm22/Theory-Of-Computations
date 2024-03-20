@@ -25,13 +25,21 @@ public class Main {
                 problem2(reader,writer);
                 writer.write("x\n");
             }else if (problemNumber==3){
-
+                writer.write(3+"\n");
+                problem3(reader, writer);
+                writer.write("x\n");
             }else if (problemNumber==4){
-
+                writer.write(4+"\n");
+                problem4(reader, writer);
+                writer.write("x\n");
             }else if (problemNumber==5){
-
+                writer.write(5+"\n");
+                problem5(reader, writer);
+                writer.write("x\n");
             }else if (problemNumber==6){
-
+                writer.write(6+"\n");
+                problem6(reader, writer);
+                writer.write("x\n");
             }else if(problemNumber==7){
                 ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
                 //فابقو بصو عليها
@@ -94,6 +102,21 @@ public class Main {
         }
     }
 
+    public static void problem3(BufferedReader reader, BufferedWriter writer) throws IOException {
+
+    }
+
+    public static void problem4(BufferedReader reader, BufferedWriter writer) throws IOException {
+        
+    }
+
+    public static void problem5(BufferedReader reader, BufferedWriter writer) throws IOException {
+        
+    }
+
+    public static void problem6(BufferedReader reader, BufferedWriter writer) throws IOException {
+        
+    }
     ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
     //فابقو بصو عليها
     public static void problem7(BufferedReader reader, BufferedWriter writer) throws IOException {
