@@ -27,7 +27,9 @@ public class Main {
             }else if (problemNumber==3){
 
             }else if (problemNumber==4){
-
+                writer.write(4+"\n");
+                problem4(reader,writer);
+                writer.write("x\n");
             }else if (problemNumber==5){
 
             }else if (problemNumber==6){
@@ -93,6 +95,23 @@ public class Main {
             }
         }
     }
+
+    public static void problem4(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String regex ="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.matches()){
+//                System.out.println(line);
+                writer.write("valid IP address\n");
+            }else{
+                writer.write("invalid IP address\n");
+            }
+        }
+    }
+
 
     ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
     //فابقو بصو عليها
