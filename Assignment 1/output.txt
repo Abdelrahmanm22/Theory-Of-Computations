@@ -22,6 +22,16 @@ matched substring: aaaaab
 start index: 3, end index: 9
 number of matched substrings: 2
 x
+8
+*The cat is cute*
+matched word: The
+start index: 0, end index: 3
+matched word: cat
+start index: 4, end index: 7
+number of matched words: 2
+*an apple*
+No word matches
+x
 9
 *problem9file.txt*
 URL: https://www.example.com/
@@ -37,4 +47,9 @@ URL: https://www.example.com/example1/example2.
 Line: 4
 Start index: 43, End index: 85
 Number of URLs: 4
+x
+10
+valid mathematical expression
+valid mathematical expression
+invalid mathematical expression
 x

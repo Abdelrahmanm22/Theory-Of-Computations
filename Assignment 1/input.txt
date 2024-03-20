@@ -14,6 +14,15 @@ end
 aabb
 aabaaaaabaa
 end
+8
+The cat is cute
+an apple
+end
 9
 problem9file.txt
+end
+10
+3-3y=90
+3x*-3y/z=90+n
+=9
 end

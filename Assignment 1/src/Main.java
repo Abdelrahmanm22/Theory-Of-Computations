@@ -39,13 +39,17 @@ public class Main {
                 problem7(reader,writer);
                 writer.write("x\n");
             }else if (problemNumber==8){
-
+                writer.write(8+"\n");
+                problem8(reader, writer);
+                writer.write("x\n");
             }else if (problemNumber==9){
                 writer.write(9+"\n");
                 problem9(reader,writer);
                 writer.write("x\n");
             }else if (problemNumber==10){
-
+                writer.write(10+"\n");
+                problem10(reader, writer);
+                writer.write("x\n");
             }
         }
 
@@ -113,6 +117,33 @@ public class Main {
         }
     }
 
+    
+    //Extract words whose length is a multiple of 3
+    public static void problem8(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String regex = "\\b(\\w{3})+\\b";
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            writer.write('*'+line+"*\n");
+            Matcher matcher = pattern.matcher(line);
+            int count = 0;
+            while (matcher.find()) {
+                String word = matcher.group();
+                int start = matcher.start();
+                int end = matcher.end();
+                // System.out.println("Word: " + word + ", Start index: " + start + ", End index: " + end);
+                writer.write("matched word: "+ word + '\n');
+                writer.write("start index: "+ start + ", end index: "+ end + '\n');
+                count++;
+            }
+            if(count>0)
+                writer.write("number of matched words: "+ count + '\n');
+            else 
+                writer.write("No word matches\n");
+        }
+    }
+
     public static void problem9(BufferedReader reader, BufferedWriter writer) throws IOException {
         String line;
         while (!(line = reader.readLine()).equals("end")) {
@@ -143,6 +174,23 @@ public class Main {
 
             writer.write("Number of URLs: " + totalURLs + "\n");
             fileReader.close();
+        }
+    }
+
+
+    public static void problem10(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String varRegex = "((-?\\d)+|([a-zA-z])|(-?\\d)+([a-zA-z])?)";
+        String regex = "^"+varRegex+"([+-/*]"+varRegex+")*="+varRegex+"([+-/*]"+varRegex+")*$";
+        Pattern pattern = Pattern.compile(regex);
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            Matcher matcher = pattern.matcher(line);
+            if (matcher.matches()){
+                writer.write("valid mathematical expression\n");
+            }else{
+                writer.write("invalid mathematical expression\n");
+            }
         }
     }
 }
