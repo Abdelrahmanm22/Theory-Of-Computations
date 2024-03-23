@@ -38,10 +38,10 @@ matched substring: ab
 start index: 1, end index: 3
 number of matched substrings: 1
 *aabaaaaabaa*
-matched substring: ab
-start index: 1, end index: 3
-matched substring: aaaaab
-start index: 3, end index: 9
+matched substring: aabaaaaa
+start index: 0, end index: 8
+matched substring: ba
+start index: 8, end index: 10
 number of matched substrings: 2
 x
 8
@@ -58,16 +58,16 @@ x
 *problem9file.txt*
 URL: https://www.example.com/
 Line: 1
-Start index: 36, End index: 60
+Start index: 36, End index: 59
 URL: https://blog.example.com.
 Line: 2
-Start index: 55, End index: 80
+Start index: 55, End index: 79
 URL: https://twitter.com/example.
 Line: 3
-Start index: 35, End index: 63
+Start index: 35, End index: 62
 URL: https://www.example.com/example1/example2.
 Line: 4
-Start index: 43, End index: 85
+Start index: 43, End index: 84
 Number of URLs: 4
 x
 10

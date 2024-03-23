@@ -176,7 +176,24 @@ public class Main {
     ////مش متأكد منها اوي لانها بتطلع انسر مختلف عن الدكتور بس انسر صح
     //فابقو بصو عليها
     public static void problem7(BufferedReader reader, BufferedWriter writer) throws IOException {
-        String regex = "(a(aa)*b(bb)*)"; ////شبه الفي الslides بتاعة lecture2 سلايد رقم 15
+        String aReg = "(a(aa)*)";
+        String bReg = "(b(bb)*)";
+        String optA = '('+aReg+aReg+")*";
+        String optB = '('+bReg+bReg+")*";
+
+
+        String regex = "(("+
+                        bReg+aReg+optA+")|("+
+                        aReg+bReg+optA+")|("+
+                        optA+bReg+aReg+")|("+
+                        optA+aReg+bReg+
+                        "))|(("+
+                        aReg+bReg+optB+")|("+
+                        bReg+aReg+optB+")|("+
+                        optB+aReg+bReg+")|("+
+                        optB+bReg+aReg+
+                        "))";
+
         Pattern pattern = Pattern.compile(regex);
 
         String line;
@@ -246,7 +263,7 @@ public class Main {
                     int endIndex = matcher.end();
                     writer.write("URL: " + url + "\n");
                     writer.write("Line: " + lineNumber + "\n");
-                    writer.write("Start index: " + startIndex + ", End index: " + (endIndex) + "\n");
+                    writer.write("Start index: " + startIndex + ", End index: " + (endIndex-1) + "\n");
                 }
                 lineNumber++;
             }
