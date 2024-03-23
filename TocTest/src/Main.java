@@ -3,8 +3,39 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
+        String aReg = "(a(aa)*)";
+        String bReg = "(b(bb)*)";
 
-        String regex = "(a(aa)*b(bb)*)|(b(bb)*a(aa)*)";
+
+        // String regex = '('+bReg+aReg+bReg+aReg+bReg+aReg+bReg+ ")|(" + aReg+bReg+aReg+bReg+aReg+bReg+aReg+')';
+        // String regex = "(("+bReg+aReg+aReg+aReg+
+        // aReg+bReg+aReg+aReg+")|("+
+        // aReg+aReg+bReg+aReg+")|("+
+        // aReg+aReg+aReg+bReg
+        // +"))|(("+
+        // aReg+bReg+bReg+bReg+")|("+
+        // bReg+aReg+bReg+bReg+")|("+
+        // bReg+bReg+aReg+bReg+")|("+
+        // bReg+bReg+bReg+aReg+"))";
+
+        String optA = '('+aReg+aReg+")*";
+        String optB = '('+bReg+bReg+")*";
+
+
+        String regex = 
+        "(("+
+        bReg+aReg+optA+")|("+
+        aReg+bReg+optA+")|("+
+        optA+bReg+aReg+")|("+
+        optA+aReg+bReg+
+        "))|(("+
+        aReg+bReg+optB+")|("+
+        bReg+aReg+optB+")|("+
+        optB+aReg+bReg+")|("+
+        optB+bReg+aReg+
+        "))"
+        ;
+        ;
 //        String regex = "(a(aa)*+b(bb)*)+";
         Pattern pattern = Pattern.compile(regex);
 
@@ -13,7 +44,7 @@ public class Main {
                 "aabaaaaabaa",
                 "aab",
                 "abbbaaaab",
-                "bbbaaab"
+                "bbaaab"
         };
         for (String st : strings) {
             Matcher matcher = pattern.matcher(st);
