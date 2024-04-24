@@ -35,6 +35,7 @@ end
 7
 aabb
 aabaaaaabaa
+baab
 end
 8
 The cat is cute
@@ -47,4 +48,6 @@ end
 3-3y=90
 3x*-3y/z=90+n
 =9
+-3x=9
+--3x=9..1
 end

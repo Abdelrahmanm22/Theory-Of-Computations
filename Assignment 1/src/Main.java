@@ -1,11 +1,16 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+///Abdelrahman Tarek 20200288 s3,s4
+///Nada Ashraf Mahmoud 20200587 s5,s6
+///Fatma Salah Mahmoud 20200376 s5,s6
+///Abdelrahman Mohamed 20200293 s5,s6
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+//        System.out.println("");
         BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
 
@@ -275,7 +280,7 @@ public class Main {
 
 
     public static void problem10(BufferedReader reader, BufferedWriter writer) throws IOException {
-        String varRegex = "((-?\\d)+|([a-zA-z])|(-?\\d)+([a-zA-z])?)";
+        String varRegex = "-?((\\d)+|([a-zA-z])|(\\d)+([a-zA-z]))";
         String regex = "^"+varRegex+"([+-/*]"+varRegex+")*="+varRegex+"([+-/*]"+varRegex+")*$";
         Pattern pattern = Pattern.compile(regex);
 
