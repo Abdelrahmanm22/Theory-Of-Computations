@@ -131,6 +131,31 @@ public class Main {
 
 
     public static void problem1PDA(BufferedReader reader, BufferedWriter writer) throws IOException {
+        Pda turnstilePDA = new Pda(
+                new String[] {"q0", "q1", "q2", "q3"},
+                new String[] {"a", "b"},
+                new String[] {"$", "a", "b"},
+                new String[] {"q0","q3"},
+                new PdaTransition[] {
+                        new PdaTransition("q0", "", "", "q1", "", "$"),
+                        new PdaTransition("q1", "a", "", "q1", "", "a"),
+                        new PdaTransition("q1", "b", "a", "q2", "a", ""),
+                        new PdaTransition("q2", "b", "a", "q2", "a", ""),
+                        new PdaTransition("q2", "", "$", "q3", "$", ""),
+                },
+                "q0"
+        );
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")) {
+            turnstilePDA.input(line);
+            if (turnstilePDA.isAccepting()) {
+                writer.write("accepted\n");
+            } else {
+                writer.write("not accepted\n");
+            }
+            turnstilePDA.reset();
+        }
 
 
     }
