@@ -1,15 +1,3 @@
-1
-aabb
-aaabbb
-aab
-aabbb
-end
-2
-aabbb
-aaaabbbbbb
-abbb
-aabb
-end
 3
 { { } }
 {} { {{} {}} }

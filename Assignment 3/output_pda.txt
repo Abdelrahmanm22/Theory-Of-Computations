@@ -1,0 +1,11 @@
+3
+accepted
+accepted
+not accepted
+not accepted
+end
+4
+accepted
+accepted
+not accepted
+end

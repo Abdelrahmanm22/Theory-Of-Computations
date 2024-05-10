@@ -33,28 +33,27 @@ public class Main {
             }
         }
 
-//        String line2;
-//        while ((line2= reader2.readLine())!=null){
-//
-//            int problemNumber = Integer.parseInt(line2);
-//            if (problemNumber==1){
-//                writer2.write(1+"\n");
-//                problem1PDA(reader2,writer2);
-//                writer2.write("end\n");
-//            }else if(problemNumber==2){
-//                writer2.write(2+"\n");
-//                problem2PDA(reader2,writer2);
-//                writer2.write("end\n");
-//            }else if (problemNumber==3){
-//                writer2.write(3+"\n");
-//                problem3PDA(reader2, writer2);
-//                writer2.write("end\n");
-//            }else if (problemNumber==4){
-//                writer2.write(4+"\n");
-//                problem4PDA(reader2, writer2);
-//                writer2.write("end\n");
-//            }
-//        }
+        String line2;
+        while ((line2= reader2.readLine())!=null){
+            int problemNumber = Integer.parseInt(line2);
+            if (problemNumber==1){
+                writer2.write(1+"\n");
+                problem1PDA(reader2,writer2);
+                writer2.write("end\n");
+            }else if(problemNumber==2){
+                writer2.write(2+"\n");
+                problem2PDA(reader2,writer2);
+                writer2.write("end\n");
+            }else if (problemNumber==3){
+                writer2.write(3+"\n");
+                problem3PDA(reader2, writer2);
+                writer2.write("end\n");
+            }else if (problemNumber==4){
+                writer2.write(4+"\n");
+                problem4PDA(reader2, writer2);
+                writer2.write("end\n");
+            }
+        }
 
         reader1.close();
         writer1.close();
@@ -141,9 +140,61 @@ public class Main {
 
     }
     public static void problem3PDA(BufferedReader reader, BufferedWriter writer) throws IOException {
+        Pda turnstilePDA = new Pda(
+                new String[] { "q0", "q1", "q2", "q3", "q4" },
+                new String[] { "{", "}" },
+                new String[] { "$", "{", "}" },
+                new String[] { "q4" },
+                new PdaTransition[] {
+                        new PdaTransition("q0", "", "", "q1", "", "$"),
+                        new PdaTransition("q1", "{", "", "q2", "", "x"),
+                        // does stack top have to be dollar sign???
+                        new PdaTransition("q2", "{", "", "q2", "", "x"),
+                        new PdaTransition("q2", "}", "x", "q3", "x", ""),
+                        new PdaTransition("q3", "{", "", "q2", "", "x"),
+                        new PdaTransition("q3", "}", "x", "q3", "x", ""),
+                        new PdaTransition("q3", "", "$", "q4", "$", ""),
 
+                },
+                "q0");
+
+        String line;
+        while (!(line = reader.readLine()).equals("end")) {
+            turnstilePDA.input(line);
+            if (turnstilePDA.isAccepting()) {
+                writer.write("accepted\n");
+            } else {
+                writer.write("not accepted\n");
+            }
+            turnstilePDA.reset();
+        }
     }
     public static void problem4PDA(BufferedReader reader, BufferedWriter writer) throws IOException {
+        Pda turnstilePDA = new Pda(
+                new String[] { "q0", "q1", "q2", "q3" },
+                new String[] { "a", "b", "c" },
+                new String[] { "$", "a", "b", "c"},
+                new String[] { "q3" },
+                new PdaTransition[] {
+                        new PdaTransition("q0", "", "", "q1", "", "$"),
+                        new PdaTransition("q1", "a", "", "q1", "", "x"),
+                        new PdaTransition("q1", "b", "x", "q2", "x", ""),
+                        new PdaTransition("q1", "c", "x", "q2", "x", ""),
+                        new PdaTransition("q2", "b", "x", "q2", "x", ""),
+                        new PdaTransition("q2", "c", "x", "q2", "x", ""),
+                        new PdaTransition("q2", "", "$", "q3", "$", ""),
 
+                },
+                "q0");
+        String line;
+        while (!(line = reader.readLine()).equals("end")) {
+            turnstilePDA.input(line);
+            if (turnstilePDA.isAccepting()) {
+                writer.write("accepted\n");
+            } else {
+                writer.write("not accepted\n");
+            }
+            turnstilePDA.reset();
+        }
     }
 }
