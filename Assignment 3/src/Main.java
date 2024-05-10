@@ -62,8 +62,31 @@ public class Main {
     }
 
     public static void problem1CFG(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            if ( check(line) ){
+                writer.write("True \n");
+            }else{
+                writer.write("False \n");
+            }
+        }
+    }
+    public static boolean check(String str){
+        int countA = 0;
+        int countB = 0;
 
-
+        for (char c : str.toCharArray()) {
+            if (c == 'a') {
+                countA++;
+            } else if (c == 'b') {
+                countB++;
+            }
+        }
+        if (countA == countB ){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
