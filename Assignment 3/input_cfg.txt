@@ -1,3 +1,9 @@
+2
+aab
+abb
+aabb
+ababaa
+end
 3
 aabbaa
 aab

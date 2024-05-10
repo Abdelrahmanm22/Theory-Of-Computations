@@ -66,9 +66,34 @@ public class Main {
 
     }
 
-    ///Validate phone numbers
-    public static void problem2CFG(BufferedReader reader, BufferedWriter writer) throws IOException {
 
+    public static void problem2CFG(BufferedReader reader, BufferedWriter writer) throws IOException {
+        String line;
+        while (!(line = reader.readLine()).equals("end")){
+            if ( ok(line) ){
+                writer.write("True \n");
+            }else{
+                writer.write("False \n");
+            }
+        }
+    }
+
+    public static boolean ok(String str){
+        int countA = 0;
+        int countB = 0;
+
+        for (char c : str.toCharArray()) {
+            if (c == 'a') {
+                countA++;
+            } else if (c == 'b') {
+                countB++;
+            }
+        }
+        if (countA == ( 2 * countB )){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public static void problem3CFG(BufferedReader reader, BufferedWriter writer) throws IOException {

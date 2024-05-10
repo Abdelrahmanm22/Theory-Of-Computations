@@ -1,3 +1,9 @@
+2
+True 
+False 
+False 
+True 
+end
 3
 accepted 
 not accepted 
