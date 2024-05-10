@@ -1,3 +1,9 @@
+2
+accepted
+accepted
+not accepted
+not accepted
+end
 3
 accepted
 accepted

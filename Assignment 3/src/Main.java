@@ -134,10 +134,37 @@ public class Main {
 
 
     }
-
-    ///Validate phone numbers
+    
     public static void problem2PDA(BufferedReader reader, BufferedWriter writer) throws IOException {
+        Pda turnstilePDA = new Pda(
+                new String[] {"q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7"},
+                new String[] {"a", "b"},
+                new String[] {"$", "a", "b"},
+                new String[] {"q7"},
+                new PdaTransition[] {
+                        new PdaTransition("q0", "", "", "q1", "", "$"),
+                        new PdaTransition("q1", "a", "", "q2", "", ""),
+                        new PdaTransition("q2", "a", "", "q3", "", "a"),
+                        new PdaTransition("q3", "a", "", "q2", "", ""),
+                        new PdaTransition("q3", "b", "", "q4", "", ""),
+                        new PdaTransition("q4", "b", "", "q5", "", ""),
+                        new PdaTransition("q5", "b", "a", "q6", "a", ""),
+                        new PdaTransition("q6", "b", "", "q4", "", ""),
+                        new PdaTransition("q6", "", "$", "q7", "$", ""),
+                },
+                "q0"
+        );
 
+        String line;
+        while (!(line = reader.readLine()).equals("end")) {
+            turnstilePDA.input(line);
+            if (turnstilePDA.isAccepting()) {
+                writer.write("accepted\n");
+            } else {
+                writer.write("not accepted\n");
+            }
+            turnstilePDA.reset();
+        }
     }
     public static void problem3PDA(BufferedReader reader, BufferedWriter writer) throws IOException {
         Pda turnstilePDA = new Pda(

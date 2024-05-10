@@ -1,3 +1,9 @@
+2
+aabbb
+aaaabbbbbb
+abbb
+aabb
+end
 3
 { { } }
 {} { {{} {}} }
