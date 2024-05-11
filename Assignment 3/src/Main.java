@@ -271,18 +271,19 @@ public class Main {
     }
     public static void problem4PDA(BufferedReader reader, BufferedWriter writer) throws IOException {
         Pda turnstilePDA = new Pda(
-                new String[] { "q0", "q1", "q2", "q3" },
+                new String[] { "q0", "q1", "q2", "q3", "q4", "q5" },
                 new String[] { "a", "b", "c" },
                 new String[] { "$", "a", "b", "c"},
-                new String[] { "q3" },
+                new String[] { "q5" },
                 new PdaTransition[] {
                         new PdaTransition("q0", "", "", "q1", "", "$"),
-                        new PdaTransition("q1", "a", "", "q1", "", "x"),
-                        new PdaTransition("q1", "b", "x", "q2", "x", ""),
-                        new PdaTransition("q1", "c", "x", "q2", "x", ""),
-                        new PdaTransition("q2", "b", "x", "q2", "x", ""),
-                        new PdaTransition("q2", "c", "x", "q2", "x", ""),
-                        new PdaTransition("q2", "", "$", "q3", "$", ""),
+                        new PdaTransition("q1", "a", "", "q2", "", "x"),
+                        new PdaTransition("q2", "a", "", "q2", "", "x"),
+                        new PdaTransition("q2", "b", "x", "q3", "x", ""),
+                        new PdaTransition("q3", "b", "x", "q3", "x", ""),
+                        new PdaTransition("q3", "c", "x", "q4", "x", ""),
+                        new PdaTransition("q4", "c", "x", "q4", "x", ""),
+                        new PdaTransition("q4", "", "$", "q5", "$", ""),
 
                 },
                 "q0");
