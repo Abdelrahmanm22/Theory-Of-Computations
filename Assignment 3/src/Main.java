@@ -64,28 +64,26 @@ public class Main {
     public static void problem1CFG(BufferedReader reader, BufferedWriter writer) throws IOException {
         String line;
         while (!(line = reader.readLine()).equals("end")){
-            if ( check(line) ){
-                writer.write("True \n");
+            if ( check(line,0,0,0) ){
+                writer.write("accepted \n");
             }else{
-                writer.write("False \n");
+                writer.write("not accepted \n");
             }
         }
     }
-    public static boolean check(String str){
-        int countA = 0;
-        int countB = 0;
-
-        for (char c : str.toCharArray()) {
-            if (c == 'a') {
-                countA++;
-            } else if (c == 'b') {
-                countB++;
-            }
+    public static boolean check(String str,int aCount, int bCount, int index){
+        // Base case
+        if (index == str.length()) {
+            return aCount == bCount;
         }
-        if (countA == countB ){
-            return true;
-        }else{
-            return false;
+        char currentChar = str.charAt(index);
+        ///transactions
+        if (currentChar == 'a') {
+            return check(str, aCount + 1, bCount, index + 1);
+        } else if (currentChar == 'b') {
+            return check(str, aCount, bCount + 1, index + 1);
+        } else {
+            return check(str, aCount, bCount, index + 1);
         }
     }
 
@@ -93,29 +91,31 @@ public class Main {
     public static void problem2CFG(BufferedReader reader, BufferedWriter writer) throws IOException {
         String line;
         while (!(line = reader.readLine()).equals("end")){
-            if ( ok(line) ){
-                writer.write("True \n");
+            if ( ok(line,0,0,0) ){
+//                System.out.println("accepted");
+                writer.write("accepted \n");
             }else{
-                writer.write("False \n");
+//                System.out.println("not accepted");
+                writer.write("not accepted \n");
             }
         }
     }
 
-    public static boolean ok(String str){
-        int countA = 0;
-        int countB = 0;
-
-        for (char c : str.toCharArray()) {
-            if (c == 'a') {
-                countA++;
-            } else if (c == 'b') {
-                countB++;
-            }
+    public static boolean ok(String str,int aCount, int bCount, int index){
+        // Base case
+        if (index == str.length()) {
+//            System.out.println(aCount+" "+bCount);
+            return aCount == (2*bCount);
         }
-        if (countA == ( 2 * countB )){
-            return true;
-        }else{
-            return false;
+        char currentChar = str.charAt(index);
+
+        ///transactions
+        if (currentChar == 'a') {
+            return ok(str, aCount + 1, bCount, index + 1);
+        } else if (currentChar == 'b') {
+            return ok(str, aCount, bCount + 1, index + 1);
+        } else {
+            return ok(str, aCount, bCount, index + 1);
         }
     }
 
@@ -143,37 +143,37 @@ public class Main {
     public static void problem4CFG(BufferedReader reader, BufferedWriter writer) throws IOException {
         String line;
         while (!(line = reader.readLine()).equals("end")){
-            if (isValid(line)){
+            if (isValid(line,0,0,0)){
                 writer.write("accepted \n");
+//                System.out.println("True");
             }else{
                 writer.write("not accepted \n");
+//                System.out.println("false");
             }
         }
     }
-    public static boolean isValid(String str){
-        if (str.charAt(0)=='b') {
-            return false;
+    public static boolean isValid(String str,int aCount, int bCount, int index){
+        // Base case
+        if (index == str.length()) {
+            return aCount == ((2*bCount)+3);
         }
+        char currentChar = str.charAt(index);
 
-        for (int i = 0; i < str.length()-1; i++) {
-            if (str.charAt(i)=='b' && str.charAt(i+1)=='a') {
+        ///check a's comes after b's
+        if (currentChar=='a' && index!=0 ){
+            char lastChar = str.charAt(index-1);
+            if (lastChar=='b'){
                 return false;
             }
-        }
-        int countA = 0;
-        int countB = 0;
 
-        for (char c : str.toCharArray()) {
-            if (c == 'a') {
-                countA++;
-            } else if (c == 'b') {
-                countB++;
-            }
         }
-        if (countA == ((2*countB)+3)){
-            return true;
-        }else{
-            return false;
+        ///transactions
+        if (currentChar == 'a') {
+            return isValid(str, aCount + 1, bCount, index + 1);
+        } else if (currentChar == 'b') {
+            return isValid(str, aCount, bCount + 1, index + 1);
+        } else {
+            return isValid(str, aCount, bCount, index + 1);
         }
     }
 
